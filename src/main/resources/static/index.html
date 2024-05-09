@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tagebuch</title>
+    <link rel="stylesheet" href="css/main.css">  <!-- Stelle sicher, dass dieser Pfad korrekt ist -->
+</head>
+<body>
+<div style="display: flex;">
+    <!-- Linke Spalte für Einträge -->
+    <div id="entryList" style="width: 30%;">
+        <ul>
+            <li th:each="entry : ${entries}">
+                <span th:text="${entry.date}">Datum</span>:
+                <span th:text="${entry.text}">Text</span>
+                <button onclick="displayEntry(this)" th:data-entryid="${entry.id}">Anzeigen</button>
+                <button onclick="deleteEntry(this)" th:data-entryid="${entry.id}">Löschen</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Mittlere Spalte für die Anzeige des ausgewählten Eintrags -->
+    <div id="displayArea" style="width: 40%; padding: 20px;">
+        <!-- Eintragsdetails werden hier angezeigt -->
+    </div>
+
+    <!-- Rechte Spalte für neues Tagebuch -->
+    <div style="width: 30%;">
+        <button onclick="showNewEntryForm()">Neuer Eintrag</button>
+        <div id="newEntryForm" style="display: none;">
+            <form th:action="@{/api/tagebuch}" method="post">
+                Nickname: <input type="text" name="nickname"/><br>
+                Text: <textarea name="text"></textarea><br>
+                <button type="submit">Speichern</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
