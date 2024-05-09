@@ -12,4 +12,5 @@ Technologien
 
 
 ## Zugriff auf die Anwendung:
-        Swagger UI ist verfügbar unter http://localhost:8080/swagger-ui.html zur API-Dokumentation und Tests.
+
+Swagger UI ist verfügbar unter http://localhost:8080/swagger-ui.html zur API-Dokumentation und Tests.
